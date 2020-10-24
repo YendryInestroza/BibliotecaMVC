@@ -1,0 +1,39 @@
+#coloresme{
+    background: #4B021F;
+}
+#colorvi{
+    background: #F7DC6F;
+    border: #F7DC6F;
+}
+
+.img-login-m{
+    height: 90%;
+    width: 90%;
+    margin-top: 5%;
+    }
+
+.bg-btn-block{
+    border-radius: 50px;
+    height: 45px;
+}
+
+#coloricon{
+    color: #4B021F;
+}
+#img-card{
+    float: left;
+    margin-right: 5px;;
+    max-width:25%;
+    max-height:25%;
+}
+
+#color-for{
+    background: #ffffff;
+    border-radius: 5px;
+}
+
+#bg-table{
+    background: #ffffff;
+}
+
+

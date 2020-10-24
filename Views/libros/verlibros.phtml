@@ -1,0 +1,134 @@
+
+
+<!--Contenido-->
+<div class="container-fluid">
+  <!-- Inicio Contenido -->
+
+  <?= $this->titulo ?>    
+
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover" id="dataTable" width="100%">
+          <thead>
+            <tr>
+              <td>ID</td>
+              <td>Nombre</td>
+              <td>Autor</td>
+              <td>Edición</td>
+              <td>Area</td>
+              <td>Proveedor</td>
+              <td>Pág.</td>
+              <td>Acciones</td>
+            </tr>
+          </thead>
+          <tbody>
+            <?= $this->contenido ?>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+
+</div>
+<!-- /.container-fluid -->
+
+</div>
+<!-- fin del contenido -->
+
+<div id="edilibro" class="modal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    <form method="POST">
+      <div class="modal-header">
+        <h5 class="modal-title">Editar Información</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!--Este es el modal para editar los datos del libro-->
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-4">
+            <input type="hidden" name="edilibro" value="1">
+              <div class="form-group">
+
+                <label for="nombre">Nombre</label>
+                <input type="text" name="l_nom" id="l_nom" class="form-control" require>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="autor">Autor</label>
+                <input type="text" name="l_aut" id="l_aut" class="form-control" require>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="area">Area</label>
+                <input type="text" name="l_ar" id="l_ar" class="form-control" require>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="edicion">Edición</label>
+                <input type="text" name="l_edic" id="l_edic" class="form-control" require>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="editor">Editor</label>
+                <input type="text" name="l_ed" id="l_ed" class="form-control" require>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="proveedor">Proveedor</label>
+                <input type="text" name="l_prov" id="l_prov" class="form-control" require>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="npaginas"># Pagínas</label>
+                <input type="number" name="l_np" id="l_np" class="form-control" require>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="fingreso">Fecha Ingreso</label>
+                <input type="date" name="l_fi" id="l_fi" class="form-control" require>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="cantidad">Cantidad</label>
+                <input type="number" name="l_cant" id="l_cant" class="form-control" require>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="precio">Costo</label>
+                <input type="number" name="l_pre" id="l_pre" class="form-control" require>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="obse">Observaciones</label>
+                <input type="text" name="l_obs" id="l_obs" class="form-control" placeholder>
+              </div>
+            </div>   
+          </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn">Guardar Cambios</button>
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+    </div>
+  </form>
+  </div>
+  </div>
+</div>
+
