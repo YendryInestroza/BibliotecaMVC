@@ -50,7 +50,7 @@
   <!-- Custom scripts for all pages-->
   <script src="<?= PLANTILLA ?>js/sb-admin-2.min.js"></script>
 
-  <script src="<?= PLANTILLA ?>js/funcion.js"></script>
+  <script src="<?= PLANTILLA ?>js/funciones.js"></script>
 
 
 

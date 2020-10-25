@@ -9,7 +9,7 @@
   <div class="card shadow mb-4">
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-bordered table-hover" id="dataTable" width="100%">
+        <table class="table table-bordered table-hover" id="dataTable tablalibros" width="100%">
           <thead>
             <tr>
               <td>ID</td>
@@ -38,9 +38,9 @@
 <!-- fin del contenido -->
 
 <div id="edilibro" class="modal" tabindex="-1">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-    <form method="POST">
+    <form id="editarl" action="" class="form" method="POST">
       <div class="modal-header">
         <h5 class="modal-title">Editar Información</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -55,11 +55,11 @@
             <div class="col-md-4">
             <input type="hidden" name="edilibro" value="1">
               <div class="form-group">
-
                 <label for="nombre">Nombre</label>
                 <input type="text" name="l_nom" id="l_nom" class="form-control" require>
               </div>
             </div>
+            <input type="hidden" name="l_id" id="l_id" class="form-control" require>
             <div class="col-md-4">
               <div class="form-group">
                 <label for="autor">Autor</label>
@@ -124,7 +124,7 @@
       </div>
     </div>
     <div class="modal-footer">
-      <button type="submit" class="btn">Guardar Cambios</button>
+      <button type="submit" class="btn btn-secondary">Guardar Cambios</button>
       <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
     </div>
   </form>
