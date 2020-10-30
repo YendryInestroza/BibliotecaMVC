@@ -41,7 +41,9 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label for="proveedor">Proveedor</label>
-                <input type="text" name="l_prov" id="l_prov" class="form-control" require>
+                <select class="form-control" name="l_prov" id="l_prov">
+                  <?= $this->proveedores; ?>
+                </select>
               </div>
             </div>
             <div class="col-md-2">

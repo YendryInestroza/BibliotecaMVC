@@ -9,7 +9,7 @@
   <div class="card shadow mb-4">
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-bordered table-hover" id="dataTable tablalibros" width="100%">
+        <table class="table table-bordered table-hover tablalibros" id="dataTable" width="100%">
           <thead>
             <tr>
               <td>ID</td>
@@ -37,10 +37,10 @@
 </div>
 <!-- fin del contenido -->
 
-<div id="edilibro" class="modal" tabindex="-1">
+<div id="EditarModal" class="modal" tabindex="-1">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-    <form id="editarl" action="" class="form" method="POST">
+    <form action="" class="form cambio" method="POST">
       <div class="modal-header">
         <h5 class="modal-title">Editar Información</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -53,7 +53,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-4">
-            <input type="hidden" name="edilibro" value="1">
+            <input type="hidden" name="editar" value="1">
               <div class="form-group">
                 <label for="nombre">Nombre</label>
                 <input type="text" name="l_nom" id="l_nom" class="form-control" require>
@@ -131,4 +131,3 @@
   </div>
   </div>
 </div>
-
