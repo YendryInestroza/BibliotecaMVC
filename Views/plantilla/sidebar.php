@@ -65,6 +65,26 @@
     <span>Préstamo</span></a>
 </li>
 
+<!-- Nav Item - Area -->
+<li class="nav-item">
+  <a class="nav-link" href="<?= BASE_URL ?>areas">
+    <i class="fas fa-fw fa-clipboard-list"></i>
+    <span>Área</span></a>
+</li>
+
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- Divider -->
 <hr class="sidebar-divider">

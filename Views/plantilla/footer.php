@@ -1,5 +1,6 @@
   <!-- Footer -->
-  
+  <?php if (Accesos::getDatos('validado')):?>
+
   <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
@@ -8,7 +9,7 @@
         </div>
       </footer>
       <!-- End of Footer -->
-
+ <?php endif;?>
     </div>
     <!-- End of Content Wrapper -->
 
@@ -33,7 +34,7 @@
         <div class="modal-body">¿Estas seguro de cerrar sesión?</div>
         <div class="modal-footer">
           <button class="btn btn-dark" type="button" data-dismiss="modal">Cancelar</button>
-          <a class="btn btn-danger" href="login.php">Salir</a>
+          <a class="btn btn-danger" href="<?=BASE_URL?>login/salir">Salir</a>
         </div>
       </div>
     </div>

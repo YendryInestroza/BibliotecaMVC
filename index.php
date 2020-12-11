@@ -10,7 +10,8 @@ require_once APP_PATH . 'Database.php';
 require_once APP_PATH . 'Controller.php';
 require_once APP_PATH . 'Model.php';
 require_once APP_PATH . 'View.php';
+require_once APP_PATH . 'Accesos.php';
 
-//Sesiones::iniciar();
+Accesos::iniciar();
 $rutas = new Rutas();
 $rutas->run();

@@ -5,10 +5,11 @@
 
   <!-- Custom styles for this template-->
   <link href="<?= PLANTILLA ?>css/sb-admin-2.min.css" rel="stylesheet">
-  <link href="<?= PLANTILLA ?>css/st.css" rel="stylesheet">
+  <link href="<?= PLANTILLA ?>css/style.css" rel="stylesheet">
   <link href="<?= PLANTILLA ?>vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 
+<?php if (Accesos::getDatos('validado')):?>
 
  <!-- Page Wrapper -->
   <div id="wrapper">
@@ -164,3 +165,4 @@
 
         </nav>
         <!-- End of Topbar -->
+  <?php endif;?>

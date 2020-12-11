@@ -46,3 +46,50 @@ $(document).ready(function(){
 
     })
 })
+
+
+
+
+/*-----------------------------------AREA-----------------------------------*/
+$(document).ready(function(){
+	$(".botonEditar1").click(function (){
+
+		var datos= JSON.parse($(this).attr('data-p'));
+		$("#id_area").val(datos['id_area']);
+        $("#area").val(datos['area']);
+        $("#descripcion_area").val(datos['descripcion_area']);
+    })
+
+
+	$("#formEditcta").submit(function(e){
+		e.preventDefault();
+
+		var id_area = $("#id_area").val();
+        var area = $("#area").val();
+        var descripcion_area = $("#descripcion_area").val();
+
+		$.ajax({
+			url:'areas/actualizararea',
+			type:'post',
+
+			data:{'id_area':id_area,'area':area,'descripcion_area':descripcion_area},
+
+			success: function(respuesta){
+
+				Swal.fire({
+					type: "success",
+					title: "Categoria Actualizada",
+					text: "¡Éxito!"
+				})
+
+				$("#e tbody").html(respuesta);
+				$("#modalEditarcat").modal('hide');
+			},
+
+			error: function(){
+				console.error("Error fatal en el sistema");
+			}
+		})
+
+	})
+});
