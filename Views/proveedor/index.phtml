@@ -1,0 +1,81 @@
+<!--Contenido-->
+<div class="container-fluid">
+  <!-- Inicio Contenido -->
+  
+    <div class="card shadow mb-4">
+      <div class="card-header">
+      <div class="d-flex bd-highlight mb-3">
+        <div class="mr-auto p-2 bd-highlight"><h4>Proveedores Registrados</h4></div>
+          <div class="p-2 bd-highlight"><a href="<?= BASE_URL ?>proveedor/agregar_prov" class="btn btn-dark">
+          <span class="fa fa-plus mr-2"></span> Agregar Nuevo</a></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover tablapro" id="dataTable" width="100%"> 
+          <thead>
+            <tr>
+              <th class="text-center">#</th>
+              <th class="text-center">Proveedor</th>
+              <th class="text-center">Dirección</th>
+              <th class="text-center">Telefono</th>
+              <th class="text-center">Representante</th>
+              <th class="text-center">Editar</th>
+              <th class="text-center">Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?=$this->table ?>
+          </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+</div>
+<!-- /.container-fluid -->
+
+</div>
+<!-- fin del contenido -->
+
+
+<div class="modal fade" id="Editar_prov">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Actualizar Proveedor</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <form id="formEditprov" action="" method="POST" class="form">
+            <input type="hidden" id="base" value="<?= BASE_URL ?>">
+            <input type="hidden" name="editar_prov" value="1">
+            <input type="hidden" class="form-control" id="p_id" name="p_id">
+            <div class="form-group">
+              <label for="proveedor">Proveedor</label>
+              <input type="text" name="nom_prov" id="nom_prov" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="direccion">Dirección</label>
+                  <input type="text" name="dir_prov" id="dir_prov" class="form-control">
+                </div>
+                <div class="form-group">
+                <label for="telefono">Telefono</label>
+                  <input type="text" name="tel_prov" id="tel_prov" class="form-control">
+                </div>
+                <div class="form-group">
+                <label for="representante">Representante</label>
+                  <input type="text" name="rep_prov" id="rep_prov" class="form-control">
+                </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-info">Guardar Cambios</button>            
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+    

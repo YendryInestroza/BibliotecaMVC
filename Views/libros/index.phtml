@@ -1,0 +1,135 @@
+<!--Contenido-->
+<div class="container-fluid">
+  <!-- Inicio Contenido -->
+  <div class="card shadow mb-4">
+    <div class="card-header">
+      <div class="bd-highlight ">
+        <div class="mr-auto p-2 bd-highlight"><h4>Libros Registrados</h4></div>
+      </div>
+    </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover tablali" id="dataTable" width="100%"> 
+          <thead>
+            <tr>
+              <th class="text-center">Código</th>
+              <th class="text-center">Titulo</th>
+              <th class="text-center">Autor</th>
+              <th class="text-center">Cantidad</th>
+              <th class="text-center">Infor</th>
+              <th class="text-center">Editar</th>
+              <th class="text-center">Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?=$this->tableli?>
+          </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+
+</div>
+<!-- fin del contenido -->
+
+<!--MODAL VER INFORMACIÓN DEL LIBRO-->
+
+<div class="modal fade" id="verLibro">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Información del Libro</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="font-weight-bold col-md-5">Código: </div> <p id="l-codigo" class="col-md-7"></p>
+              <div class="font-weight-bold col-md-5">Titulo: </div> <p id="l-titulo" class="col-md-7"></p>
+              <div class="font-weight-bold col-md-5">Autor: </div> <p id="l-autor" class="col-md-7"></p>
+              <div class="font-weight-bold col-md-5">Editorial: </div> <p id="l-editorial" class="col-md-7"></p>
+              <div class="font-weight-bold col-md-5">Edición: </div> <p id="l-edicion" class="col-md-7"></p>
+              <div class="font-weight-bold col-md-5">Año: </div> <p id="l-year" class="col-md-7"></p>
+              <div class="font-weight-bold col-md-5">Categoria: </div> <p id="l-categoria" class="col-md-7"></p>
+              <div class="font-weight-bold col-md-5">Proveedor: </div> <p id="l-proveedor" class="col-md-7"></p>
+              <div class="font-weight-bold col-md-5">Fecha Ingreso: </div> <p id="l-fingreso" class="col-md-7"></p>
+              <div class="font-weight-bold col-md-5">Cantidad: </div> <p id="l-cantidad" class="col-md-7"></p>
+            </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+
+
+<!--MODAL ACTUALIZAR INFORMACIÓN DEL LIBRO-->
+
+<div class="modal fade" id="editLibro">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Actualizar Información Empleado</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="formEditlibro" action="" method="POST" class="form-row">
+              <input type="hidden" id="base" value="<?= BASE_URL ?>">
+              <input type="hidden" name="editLibro" value="1">
+              
+              <div class="col-md-4">
+                  <label for="codigo">Código</label>
+                  <input type="text" name="codigo" id="codigo" class="form-control" require autocomplete="off">
+                </div>
+                <div class="col-md-4">
+                  <label for="titulo">Titulo</label>
+                  <input type="text" name="titulo" id="titulo" class="form-control" require autocomplete="off">
+                </div>
+                <div class="col-md-4">
+                  <label for="autor">Autor</label>
+                  <input type="text" name="autor" id="autor" class="form-control" require>
+                </div>
+                <div class="col-md-5 mt-3">
+                  <label for="editorial">Editorial</label>
+                  <input type="text" name="editorial" id="editorial" class="form-control" require>
+                </div>
+                <div class="col-md-5 mt-3">
+                  <label for="edicion">Edición</label>
+                  <input type="text" name="edicion" id="edicion" class="form-control" require>
+                </div>
+                <div class="col-md-2 mt-3">
+                  <label for="year">Año</label>
+                  <input type="number" name="year" id="year" class="form-control" require>
+                </div>
+                <div class="col-md-4 mt-3">
+                  <label for="categoria">Categoría</label>
+                  <input type="text" name="categoria" id="categoria" class="form-control" require>
+                </div>
+                <div class="col-md-3 mt-3">
+                  <label for="proveedor">Proveedor</label>
+                  <input type="text" name="proveedor" id="proveedor" class="form-control" require>
+                </div>
+                <div class="col-md-3 mt-3">
+                  <label for="fingreso">Fecha Ingreso</label>
+                  <input type="date" name="fingreso" id="fingreso" class="form-control" require>
+                </div>
+                <div class="col-md-2 mt-3">
+                  <label for="cantidad">Cantidad</label>
+                  <input type="number" name="cantidad" id="cantidad" class="form-control" require>
+                </div>
+              </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-info">Guardar Cambios</button>            
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+    

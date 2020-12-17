@@ -7,6 +7,7 @@
   <link href="<?= PLANTILLA ?>css/sb-admin-2.min.css" rel="stylesheet">
   <link href="<?= PLANTILLA ?>css/style.css" rel="stylesheet">
   <link href="<?= PLANTILLA ?>vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="<?= PLANTILLA?>js/chosen.min.css">
 
 
 <?php if (Accesos::getDatos('validado')):?>

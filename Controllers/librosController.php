@@ -1,104 +1,114 @@
 <?php   
-    class librosController extends Controller
-    {
-        private $libros; 
-
-        function __construct (){
-            parent::__construct ();
-                $this->libros = $this->loadModel("libros");
+    class librosController extends Controller{
+        private $_libros; 
+        function __construct(){
+            parent::__construct();
+                $this->_libros = $this->loadModel('libros');
         }
 
-        public function generarTabla(){
-            $fila = $this->libros->getlibros();
-            $table ='';
-            
-            foreach($fila AS $s){
+        /*Llamar las categorías*/ 
+        
+        public function generarCategoria(){
+            $fila = '';
+            $datos = $this->_libros->getCat();
+            foreach($datos AS $c){
 
-                $datosl=json_encode($s);
-                $table .='
-                <tr>
-                    <td>'.$s['idlibro'].'</td>
-                    <td>'.$s['nom_li'].'</td>
-                    <td>'.$s['autor_li'].'</td>
-                    <td>'.$s['edicion_li'].'</td>
-                    <td>'.$s['area_li'].'</td>
-                    <td>'.$s['nom_prov'].'</td>
-                    <td>'.$s['npagina_li'].'</td>
-                    <td class="text-center"><button type="button" class="edit btn btn-warning" data-ed=\''.$datosl.'\' data-target="#EditarModal" data-toggle="modal"><i class="fas fa-edit"></i></button></td>
-                    <td class="text-center"><button type="button" class="elim btn btn-danger" data-elim="'.$s['idlibro'].'"><i class="fas fa-trash"></i></button></td>
-
-                    
-                </tr>
-                ';
+                $fila .= '<option value="'.$c['id_area'].'">'.$c['area'].'</option>';
             }
-                return $table;
+            return $fila;
         }
-        public function generarProveedores(){
-            $provee= $this->libros->getProveedores();
-            $opciones ='';
-            foreach ($provee as $p){
-                $opciones .='
-                <option value="'.$p['p_id'].'">'.$p['nom_prov'].'</option>';
+
+        /*Llamar los proveedores*/ 
+        public function generarProveedor(){
+            $fila = '';
+            $datos= $this->_libros->getProv();
+            foreach($datos AS $p){
+                $fila .= '<option value="'.$p['p_id'].'">'.$p['nom_prov'].'</option>';
             }
-            return $opciones;
+            return $fila;
+        }
+
+
+
+        public function generarTable(){
+            $fila = $this->_libros->obtenerlibros();
+            $tableli ='';
+            foreach($fila AS $l){
+                $datos=json_encode($l);
+
+                $tableli.='<tr>
+                    <td class="text-center">'.$l['codigo'].'</td>
+                    <td>'.$l['titulo'].'</td>
+                    <td>'.$l['autor'].'</td>
+                    <td class="text-center">'.$l['cantidad'].'</td>
+                    <td class="text-center">
+                        <button class="btn btn-info verlibro" data-toggle="modal" data-target="#verLibro" data-verli=\'' .$datos. '\'>
+                        <span class="fas fa-eye"></span>
+                        </button>
+                    </td>
+                    <td class="text-center">
+                        <button class="btn btn-primary editlibro" data-toggle="modal" data-target="#editLibro" data-editli=\'' .$datos. '\'>
+                        <span class="fas fa-edit"></span>
+                        </button>
+                    </td>
+                    <td class="text-center">
+                        <button class="btn btn-danger dellibro"  data-delli=\'' .$l['codigo']. '\'>
+                        <span class="fas fa-trash"></span>
+                        </button>
+                    </td>  
+                    </tr>';
+            }
+                return $tableli;
         }
 
         public function index(){
-            $this->_view->renderizar("index");
+            
+            $tableli = $this->generarTable();
+            $this->_view->tableli=$tableli;
+            $this->_view->renderizar('index');
             }
-
-        public function verlibros(){
-            $this->_view->titulo = '<h1 class="h3 text-gray-800 text-center">LIBROS</h1>';
-            $table = $this->generarTabla();
-            $this->_view->contenido =$table;
-    
-            $this->_view->renderizar("verlibros");
-        }
-
-        public function agregar(){
-            if($this->getTexto('add') == '1'){
-                $l_nom = $this->getTexto('l_nom');
-                $l_aut = $this->getTexto('l_aut');
-                $l_ar = $this->getTexto('l_ar');
-                $l_edic = $this->getTexto('l_edic');
-                $l_ed = $this->getTexto('l_ed');
-                $l_prov = $this->getTexto('l_prov');
-                $l_np = $this->getTexto('l_np');
-                $l_fi = $this->getTexto('l_fi');
-                $l_cant = $this->getTexto('l_cant');
-                $l_pre = $this->getTexto('l_pre');
-                $l_obs = $this->getTexto('l_obs');
-                $this->libros->agregarLibro($l_nom,$l_aut,$l_ar,$l_edic,$l_ed,$l_prov,$l_np,$l_fi,$l_cant,$l_pre,$l_obs);
-                $this->redireccionar('libros/verlibros');
+            
+        public function agregar_libro(){
+            if($this->getTexto('agregar')=='1'){
+                $codigo = $this->getTexto('codigo');
+                $titulo = $this->getTexto('titulo');
+                $autor = $this->getTexto('autor');
+                $editorial = $this->getTexto('editorial');
+                $edicion = $this->getTexto('edicion');
+                $year = $this->getTexto('year');
+                $categoria = $this->getTexto('categoria');
+                $proveedor = $this->getTexto('proveedor');
+                $fingreso = $this->getTexto('fingreso');
+                $cantidad = $this->getTexto('cantidad');
+                $this->_libros->agregar_libro($codigo, $titulo, $autor, $editorial, $edicion, $year, $categoria, $proveedor, $fingreso, $cantidad);
+                $this->redireccionar('libros');
             }
-            $this->_view->proveedores=$this->generarProveedores();
-            $this->_view->renderizar("agregar");
-        }
-
-        public function eliminar(){
-            $id = $this->getTexto("id");
-            $this->libros->elim($id);
-            echo $this->generarTabla();
-        }
-
-        public function editar(){
-            $datos = array(
-                "l_id"=>$this->getTexto("l_id"),
-                "l_nom"=>$this->getTexto("l_nom"),
-                "l_aut"=>$this->getTexto("l_aut"),
-                "l_ar"=>$this->getTexto("l_ar"),
-                "l_edic"=>$this->getTexto("l_edic"),
-                "l_ed"=>$this->getTexto("l_ed"),
-                "l_prov"=>$this->getTexto("l_prov"),
-                "l_np"=>$this->getTexto("l_np"),
-                "l_fi"=>$this->getTexto("l_fi"),
-                "l_cant"=>$this->getTexto("l_cant"),
-                "l_pre"=>$this->getTexto("l_pre"),
-                "l_obs"=>$this->getTexto("l_obs")
-
-            );
-                $this->libros->editarLibro($datos);
-                echo $this->generarTabla();
+            $this->_view->categoria = $this->generarCategoria();
+            $this->_view->proveedor = $this->generarProveedor();
+            $this->_view->renderizar('agregar_libro');
         }
     
+        public function update(){
+            $this->_libros->actualizar(array(
+                "codigo" => $this->getTexto('codigo'),
+                "titulo" => $this->getTexto('titulo'),
+                "autor" => $this->getTexto('autor'),
+                "editorial" => $this->getTexto('editorial'),
+                "edicion" => $this->getTexto('edicion'),
+                "year" => $this->getTexto('year'),
+                "categoria" => $this->getTexto('categoria'),
+                "proveedor" => $this->getTexto('proveedor'),
+                "fingreso" => $this->getTexto('fingreso'),
+                "cantidad" => $this->getTexto('cantidad')
+            ));
+
+            echo $this->generarTable();
+        }
+
+        public function delete(){
+            $this->_libros->elimli($this->getTexto('codigo'));
+
+            echo $this->generarTable();
+        }
     }
+?>

@@ -33,7 +33,7 @@
         </div>
         <div class="modal-body">¿Estas seguro de cerrar sesión?</div>
         <div class="modal-footer">
-          <button class="btn btn-dark" type="button" data-dismiss="modal">Cancelar</button>
+          <button class="btn btn-primary" type="button" data-dismiss="modal">Cancelar</button>
           <a class="btn btn-danger" href="<?=BASE_URL?>login/salir">Salir</a>
         </div>
       </div>
@@ -51,7 +51,16 @@
   <!-- Custom scripts for all pages-->
   <script src="<?= PLANTILLA ?>js/sb-admin-2.min.js"></script>
 
+  
   <script src="<?= PLANTILLA ?>js/funcion.js"></script>
+
+  <script src="<?= PLANTILLA ?>js/sweetalert2.js"></script>
+  <script src="<?= PLANTILLA ?>js/jquery.validate.min.js"></script>
+  <script src="<?= PLANTILLA ?>js/jquery.complexify.banlist.js"></script>
+  <script src="<?= PLANTILLA ?>js/jquery.complexify.js"></script>
+  <script src="<?= PLANTILLA ?>js/validarcont.js"></script>
+  <script src="<?= PLANTILLA ?>js/chosen.jquery.min.js"></script>
+  <script src="<?= PLANTILLA ?>js/isotope.min.js"></script>
 
 
 

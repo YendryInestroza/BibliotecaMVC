@@ -12,8 +12,8 @@
         public static function iniciar(){session_start();}
 
         public static function acceso($rol){
-            if(Acceso::getDatos('validado')){
-                if(Acceso::nivel(Acceso::getDatos('rol'))>= Accesso::nivel($rol))
+            if(Accesos::getDatos('validado')){
+                if(Accesos::nivel(Accesos::getDatos('rol'))>= Accesos::nivel($rol))
                     return true;
                 else header("Location:".BASE_URL.'error/error/503');
             } else header("Location:".BASE_URL.'error/error/504');
@@ -32,4 +32,4 @@
             }
         }
    
-?>
+?>            

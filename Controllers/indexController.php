@@ -9,6 +9,5 @@
            if(Accesos::getDatos('validado'))
            $this-> _view->renderizar("index");
             else $this->redireccionar('login');
-            
         }
     }

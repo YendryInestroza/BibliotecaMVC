@@ -20,16 +20,14 @@ class areasController extends Controller{
             <td>'.$f['area'].'</td>
             <td>'.$f['descripcion_area'].'</td>
             <td class="text-center">
-                <div class="btn-group">
-                   <button class="btn btn-info botonEditar1" data-toggle="modal" data-target="#modalEditarcat" data-p=\'' .$datos. '\'>
-                    <span class="fas fa-edit"></span>
-                   </button>
-                  
-                   <button class="btn btn-danger botonEliminar1 ml-3" data-d=\'' .$f['id_area']. '\'>
-                    <span class="fas fa-trash"></span>
-                   </button>
-                </div>
+                <button class="btn btn-primary editcatg" data-toggle="modal" data-target="#editcat" data-p=\'' .$datos. '\'>
+                <span class="fas fa-edit"></span>
+                </button>
             </td>
+            <td class="text-center"> 
+                <button class="btn btn-danger elimcatg ml-3" data-elim=\'' .$f['id_area']. '\'>
+                <span class="fas fa-trash"></span>
+                </button></td>
             </tr>';
         }
 
@@ -44,12 +42,18 @@ class areasController extends Controller{
            
     }
 
+    //se envia ala informacion atraves de ajax a este metodo update
+    public function update(){
 
-    public function edit(){
-            $id_area=$this->getTexto('id_area');
-            $area=$this->getTexto('area');
-            $descripcion_area=$this->getTexto('descripcion_area');
-            $this->_area->actualizararea($id_area,$area,$descripcion_area);
+        //se crea un metodo en el modelo actualizar y sele manda un array
+        //con los datos que bienen de ajax
+        $this->_areas->actualizar(array(
+            "id" => $this->getTexto('id'),
+            "area" => $this->getTexto('area'),
+            "descripcion" => $this->getTexto('descripcion')
+        ));
+
+        //se hace un echo de la tabla con la nueva informacion
         echo $this->generarTabla();
     }
 
@@ -64,32 +68,12 @@ class areasController extends Controller{
         $this->_view->renderizar('agregarareas');
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public function eliminar(){
-        $idtbCategorias = $this->getTexto('idtbCategorias');
-        $this->_categorias->eliminar($idtbCategorias);
-        echo $this->generarTabla();
+    //se envia la informacion desde ajax al metodo delete
+    public function delete(){
+        //se crea el metodo en el  modelo llamado delArea y se le pasa el id
+       $this->_areas->delArea($this->getTexto('id'));
+       //se hace un echo de la tabla con la nueva informacion
+       echo $this->generarTabla();
     }
     
 

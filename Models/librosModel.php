@@ -1,62 +1,56 @@
 <?php
-    class librosModel extends Model
-    {
+    class librosModel extends Model{
         function __construct (){
             parent::__construct ();
         }
-            public function getlibros(){
-                $fila = $this->_db->query("SELECT l. *,p.nom_prov FROM 
-                libros as l INNER JOIN proveedores as p ON l.proveedor_li=p.p_id")->fetchAll();
+        
+        public function obtenerlibros(){
+            $fila = $this->_db->query("SELECT * FROM libro")->fetchAll();
                 
                 return $fila;
             }
-
-        public function agregarLibro($nom,$aut,$ar,$edic,$ed,$prov,$np,$fi,$cant,$pre,$obs){
-            $this->_db->prepare("INSERT INTO libros(nom_li, autor_li, area_li, edicion_li, editor_li, proveedor_li, npagina_li, fingreso_li, cantidad_li, precio_li, observaciones_li) 
-            VALUES(:nom,:aut,:ar,:edic,:ed,:prov,:np,:fi,:cant,:pre,:obs)")->execute(array(
-                "nom" => $nom,
-                "aut" => $aut,
-                "ar" => $ar,
-                "edic" => $edic,
-                "ed" => $ed,
-                "prov" => $prov,
-                "np" => $np,
-                "fi" => $fi,
-                "cant" => $cant,
-                "pre" => $pre,
-                "obs" => $obs
+        public function agregar_libro($codigo, $titulo, $autor, $editorial, $edicion, $year, $categoria, $proveedor, $fingreso, $cantidad){
+            $this->_db->prepare('INSERT INTO libro(codigo, titulo, autor, editorial, edicion, year, categoria, proveedor, fingreso, cantidad) VALUE(:codigo, :titulo, :autor, :editorial, :edicion, :year, :categoria, :proveedor, :fingreso, :cantidad)')
+            ->execute(array(
+                'codigo' => $codigo,
+                'titulo' => $titulo,
+                'autor' => $autor,
+                'editorial' => $editorial,
+                'edicion' => $edicion,
+                'year' => $year,
+                'categoria' => $categoria,
+                'proveedor' => $proveedor,
+                'fingreso' => $fingreso,
+                'cantidad' => $cantidad
             ));
         }
 
-        public function editarLibro($datos){
-            foreach($datos AS $key =>$value){
-                $$key = $value;
+        public function getCat(){
+            $fila= $this->_db->query("SELECT * FROM areas")->fetchAll();
+            return $fila;
             }
-            $this->_db->prepare("UPDATE libros SET nom_li = :nom, autor_li = :aut, area_li =:ar, edicion_li =:edic, editor_li =:ed, proveedor_li =:prov, npagina_li =:np,
-                                fingreso_li =:fi, cantidad_li =:cant, precio_li =:pre, observaciones_li =:obs WHERE libros.idlibro =:id")
-                ->execute(array(
-                    "id"=>$l_id, 
-                    "nom" => $l_nom,
-                    "aut" => $l_aut,
-                    "ar" => $l_ar,
-                    "edic" => $l_edic,
-                    "ed" => $l_ed,
-                    "prov" => $l_prov,
-                    "np" => $l_np,
-                    "fi" => $l_fi,
-                    "cant" => $l_cant,
-                    "pre" => $l_pre,
-                    "obs" => $l_obs
-
-                ));
+        
+        public function getProv(){
+            $fila = $this->_db->query("SELECT * FROM proveedores")->fetchAll();
+            return $fila;
         }
-        public function getProveedores(){
-            $prov=$this->_db->query("SELECT * FROM proveedores")->fetchAll();
-                return $prov;
+    
+        public function actualizar($datos){
+            $this->_db->prepare('UPDATE libro SET titulo = :titulo, autor = :autor, editorial = :editorial, edicion = :edicion, year = :year, categoria = :categoria, proveedor = :proveedor, fingreso = :fingreso, cantidad = :cantidad WHERE codigo = :codigo')->execute(array(
+                'codigo' => $datos['codigo'],
+                'titulo' => $datos['titulo'],
+                'autor' => $datos['autor'],
+                'editorial' => $datos['editorial'],
+                'edicion' => $datos['edicion'],
+                'year' => $datos['year'],
+                'categoria' => $datos['categoria'],
+                'proveedor' => $datos['proveedor'],
+                'fingreso' => $datos['fingreso'],
+                'cantidad' => $datos['cantidad']
+            ));
         }
 
-        public function elim($id){
-            $this->_db->prepare("DELETE FROM libros WHERE idlibro = :id")->execute(array("id"=>$id));
+        public function elimli($codigo){
+            $this->_db->prepare('DELETE FROM libro WHERE codigo = :codigo')->execute(["codigo"=>$codigo]);
         }
     }
-  ?>

@@ -1,44 +1,75 @@
 <?php
-    class proveedorController extends Controller
-    {
-        private $proveedores;
 
-        function __construct (){
+    class proveedorController extends Controller{
+        private $_proveedores;
+        function __construct(){
             parent::__construct();
-            $this->proveedores = $this->loadModel("proveedores");
+            $this->_proveedores = $this->loadModel('proveedores');
+        }
+
+        public function generarTable(){
+            $fila = $this ->_proveedores ->obtenerproveedores();
+            $table = '';
+            foreach ($fila as $p){
+                $datos = json_encode($p);
+
+                $table.='<tr>
+                <td class="text-center">'.$p['p_id'].'</td>
+                <td>'.$p['nom_prov'].'</td>
+                <td>'.$p['dir_prov'].'</td>
+                <td>'.$p['tel_prov'].'</td>
+                <td>'.$p['rep_prov'].'</td>
+                <td class="text-center">
+                    <button class="btn btn-primary editprov" data-toggle="modal" data-target="#Editar_prov" data-editp=\'' .$datos. '\'>
+                    <span class="fas fa-edit"></span>
+                    </button>
+                </td>
+                <td class="text-center">
+                    <button class="btn btn-danger deltprov"  data-deltp=\'' .$p['p_id']. '\'>
+                    <span class="fas fa-trash"></span>
+                    </button>
+                </td>
+                </tr>';
+            }
+            return $table;
         }
 
         public function index(){
-        
-        if($this->getText('Editar_prov')=='1'){
-            $p_nom = $this->getTexto("p_nom");
-            $p_dir = $this->getTexto("p_dir");
-            $p_tel = $this->getTexto("p_tel");
-            $p_rep = $this->getTexto("p_rep");
-            $this->_proveedores->editarprov($p_nom,$p_dir,$p_tel,$p_rep);
-       
-        }
-        $this->_view->renderizar('index');
-
-    }
-        public function verProveedores(){
-
-            if($this->getTexto("add") == "1"){
-                $p_nom = $this->getTexto("p_nom");
-                $p_dir = $this->getTexto("p_dir");
-                $p_tel = $this->getTexto("p_tel");
-                $p_rep = $this->getTexto("p_rep");
-                $this->proveedores->agregarprov($p_nom,$p_dir,$p_tel,$p_rep);
-            }
-
-            $this->_view->titulo = '<h1 class="h3 text-gray-800 text-center">Proveedores</h1>';
-
-            $table = $this->proveedores->getproveedor();
-            $this->_view->contenido =$table;
-
-            $this->_view->renderizar('verProveedores');
+            $table = $this->generarTable();
+            $this->_view->table=$table;
+            $this->_view->renderizar('index');
         }
 
+        public function agregar_prov(){
+            if($this->getTexto('agregar')=='1') {
+            $nom_prov = $this->getTexto('nom_prov');
+            $dir_prov = $this->getTexto('dir_prov');
+            $tel_prov = $this->getTexto('tel_prov');
+            $rep_prov = $this->getTexto('rep_prov');
+            $this->_proveedores->agregar_prov($nom_prov, $dir_prov, $tel_prov, $rep_prov);
+            $this->redireccionar('proveedor');
+        }
+    
+            $this->_view->renderizar('agregar_prov');
+        }
+
+        public function update(){
+            $this->_proveedores->actualizar(array(
+                "p_id" => $this->getTexto('p_id'),
+                "nom_prov" => $this->getTexto('nom_prov'),
+                "dir_prov" => $this->getTexto('dir_prov'),
+                "tel_prov" => $this->getTexto('tel_prov'),
+                "rep_prov" => $this->getTexto('rep_prov')
+            ));
+
+            echo $this->generarTable();
+        }
+
+        public function delete(){
+            $this->_proveedores->elimprov($this->getTexto('p_id'));
+
+            echo $this->generarTable();
+        }
     }
 
- 
+?>

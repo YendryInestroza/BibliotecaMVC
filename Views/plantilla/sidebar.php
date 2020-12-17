@@ -37,13 +37,13 @@
   </a>
   <div id="collapselibro" class="collapse" aria-labelledby="headinglibro" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
-      <a class="collapse-item" href="<?= BASE_URL ?>libros/verlibros"><i class="fas fa-fw fa-eye "></i> Ver Libros</a>
-      <a class="collapse-item" href="<?= BASE_URL ?>libros/agregar"><i class="fas fa-fw fa-plus-circle"></i> Ingresar Nuevo</a>
+      <a class="collapse-item" href="<?= BASE_URL ?>libros"><i class="fas fa-fw fa-eye "></i> Ver Libros</a>
+      <a class="collapse-item" href="<?= BASE_URL ?>libros/agregar_libro"><i class="fas fa-fw fa-plus-circle"></i> Ingresar Nuevo</a>
     </div>
   </div>
 </li>
 
-<!-- Nav Item - Recursos -->
+<!-- Nav Item - Recursos
 <li class="nav-item">
   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapserecurso" aria-expanded="true" aria-controls="collapserecurso">
     <i class="fas fa-fw fa-globe-americas"></i>
@@ -58,32 +58,26 @@
 </li>
 
 
-<!-- Nav Item - Préstamos -->
+ Nav Item - Préstamos 
 <li class="nav-item">
   <a class="nav-link" href="#">
     <i class="fas fa-fw fa-user-clock"></i>
     <span>Préstamo</span></a>
-</li>
+</li> -->
 
 <!-- Nav Item - Area -->
 <li class="nav-item">
   <a class="nav-link" href="<?= BASE_URL ?>areas">
     <i class="fas fa-fw fa-clipboard-list"></i>
-    <span>Área</span></a>
+    <span>Categorías</span></a>
 </li>
 
+<li class="nav-item">
+  <a class="nav-link" href="<?= BASE_URL ?>proveedor">
+    <i class="fas fa-fw fa-truck"></i>
+    <span>Proveedores</span></a>
 </li>
-
-
-
-
-
-
-
-
-
-
-
+</li>
 
 
 <!-- Divider -->
@@ -95,18 +89,8 @@
 </div>
 
 <!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item">
-  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseprov" aria-expanded="true" aria-controls="collapseprov">
-    <i class="fas fa-fw fa-truck"></i>
-    <span>Proveedor</span>
-  </a>
-  <div id="collapseprov" class="collapse" aria-labelledby="headingprov" data-parent="#accordionSidebar">
-    <div class="bg-white py-2 collapse-inner rounded">
-      <a class="collapse-item" href="<?= BASE_URL ?>proveedor/verProveedores"><i class="fas fa-fw fa-eye "></i> Ver Proveedores</a>
-      <a class="collapse-item" href="#"><i class="fas fa-fw fa-plus-circle"></i> Ingresar Nuevo</a>
-    </div>
-  </div>
-</li>
+
+
 
 <!-- Nav Item - Inventario -->
 <li class="nav-item">
@@ -117,9 +101,9 @@
 
 <!-- Nav Item - Estadística -->
 <li class="nav-item">
-  <a class="nav-link" href="#">
-    <i class="fas fa-fw fa-chart-line"></i>
-    <span>Estadísticas</span></a>
+  <a class="nav-link" href="<?= BASE_URL ?>empleado">
+    <i class="fas fa-fw fa-users"></i>
+    <span>Empleados</span></a>
 </li>
 
 <!-- Divider -->

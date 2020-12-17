@@ -1,0 +1,147 @@
+<!--Contenido-->
+<div class="container-fluid">
+  <!-- Inicio Contenido -->
+  
+    <div class="card shadow mb-4">
+      <div class="card-header">
+      <div class="d-flex bd-highlight mb-3">
+        <div class="mr-auto p-2 bd-highlight"><h4>Empleados Registrados</h4></div>
+          <div class="p-2 bd-highlight"><a href="<?= BASE_URL ?>empleado/agregar_empleado" class="btn btn-dark">
+          <span class="fa fa-plus mr-2"></span> Agregar Nuevo</a></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover tablaemp" id="dataTable" width="100%"> 
+          <thead>
+            <tr>
+              <th class="text-center">#</th>
+              <th class="text-center">Nombre</th>
+              <th class="text-center">Apellido</th>
+              <th class="text-center">Telefono</th>
+              <th class="text-center">Rol</th>
+              <th class="text-center">Ver</th>
+              <th class="text-center">Editar</th>
+              <th class="text-center">Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?=$this->tableempl?>
+          </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+</div>
+<!-- /.container-fluid -->
+
+</div>
+
+
+
+
+<!--MODAL VER INFORMACIÓN DEL EMPLEADO-->
+<div class="modal fade" id="verEmpl">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Información del Enpleado</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="font-weight-bold col-md-5">Nombre: </div> <p id="e-nombre" class="col-md-7"></p>
+              <div class="font-weight-bold col-md-5">Apellido: </div> <p id="e-apellido" class="col-md-7"></p>
+              <div class="font-weight-bold col-md-5">Fecha nacimiento: </div> <p id="e-f_nacimiento" class="col-md-7"></p>
+              <div class="font-weight-bold col-md-5">Telefono: </div> <p id="e-telefono" class="col-md-7"></p>
+              <div class="font-weight-bold col-md-5">Usuario: </div> <p id="e-usuario" class="col-md-7"></p>
+              <div class="font-weight-bold col-md-5">Correo: </div> <p id="e-correo" class="col-md-7"></p>
+              <div class="font-weight-bold col-md-5">Rol: </div> <p id="e-rol" class="col-md-7"></p>
+            </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+<!--MODAL ACTUALIZAR INFORMACIÓN DEL EMPLEADO-->
+
+  <div class="modal fade" id="editEmpl">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Actualizar Información Empleado</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="formEditempl" action="" method="POST" class="form-row">
+              <input type="hidden" id="base" value="<?= BASE_URL ?>">
+              <input type="hidden" name="editEmpl" value="1">
+              <input type="hidden" class="form-control" id="id" name="id">
+            
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="nombre">Nombre</label>
+                  <input type="text" name="nombre" id="nombre" class="form-control" autocomplete="off">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="apellido">Apellido</label>
+                  <input type="text" name="apellido" id="apellido" class="form-control" autocomplete="off">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="f_nacimiento">Fecha de Nacimiento</label>
+                  <input type="date" name="f_nacimiento" id="f_nacimiento" class="form-control" >
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="telefono">Telefono</label>
+                  <input type="text" name="telefono" id="telefono" class="form-control" autocomplete="off">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="usuario">Nombre Usuario</label>
+                  <input type="text" name="usuario" id="usuario" class="form-control" autocomplete="off" >
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="correo">Correo</label>
+                  <input type="email" name="correo" id="correo" class="form-control" autocomplete="off" >
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="pass">Contraseña</label>
+                  <input type="password" name="pass" id="pass" class="form-control" >
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="rol">Rol</label>
+                  <input type="text" name="rol" id="rol" class="form-control" >
+                </div>
+              </div>
+           
+          </div>
+
+
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-info">Guardar Cambios</button>            
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+    

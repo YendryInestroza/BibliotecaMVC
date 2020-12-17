@@ -6,35 +6,33 @@ class areasModel extends Model{
     }
 
 	public function obtenerareas($campo=null,$valor=null){
-		$fila=$this->_db->query("SELECT * FROM areas")->fetchAll();
-		return $fila;
+		return $this->_db->query("SELECT * FROM areas")->fetchAll();
+		
 	}
 
 	public function agregarareas($area, $descripcion_area){
 	  $this->_db->prepare('INSERT INTO areas(area, descripcion_area) VALUES(:area, :descripcion_area)')
 	  ->execute(array(
-		'area'=>$area,
-		'descripcion_area'=>$descripcion_area
-	));
+			'area' => $area,
+			'descripcion_area' => $descripcion_area
+		));
 	}
 		
- 	public function actualizararea($id_area,$area,$descripcion_area)
+ 	public function actualizar($datos)
 	{
 		$this->_db->prepare('UPDATE areas SET 
-			area, descripcion_area = :area, descripcion_area
-			where id_area= :id_area')->execute(array(
-				'id_area'=>$id_area,
-				'area'=>$area,
-				'descripcion_area'=>$descripcion_area		
+			area = :are, descripcion_area = :descrip
+			where id_area = :id')->execute(array(
+				'id' => $datos['id'],
+				'are' => $datos['area'],
+				'descrip' => $datos['descripcion']		
 	    ));
 	}
 
-	public function eliminar($idtbCategorias){
-        $this->_db->prepare('DELETE FROM tbcategorias WHERE idtbCategorias =:idtbCategorias')->execute(
-        	array(
-        		'idtbCategorias'=>$idtbCategorias,
-        	));
-    }
+
+	public function delArea($id){
+		$this->_db->prepare("DELETE FROM areas WHERE id_area = :id")->execute(["id" => $id]);
+	}
 }
 
 

@@ -1,0 +1,61 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+          <div class="col-12 col-sm-6 col-md-10 form-registro p-2">
+          <h2 >Agregar Empleado</h2> <hr>
+                <form action="" method="post" class="form-empl">
+                    <input type="hidden" name="agregar" value="1">
+                     <div class="card-body">
+                        <div class="row"> 
+                            <div class="col-md-2">
+                                <label for="id_area">ID</label>
+                                    <input type="text" class="form-control" id="id" name="id" placeholder="Automatic" disabled>
+                            </div>
+                            <div class="col-md-5 ">
+                                <label for="nombre">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required autocomplete="off">
+                            </div>
+                            <div class="col-md-5 ">
+                                <label for="apellido">Apellido</label>
+                                <input type="text" class="form-control" id="apellido" name="apellido" required autocomplete="off">
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <label for="f_nacimiento">Fecha de Nacimiento</label>
+                                <input type="date" class="form-control" id="f_nacimiento" name="f_nacimiento" required autocomplete="off">
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <label for="telefono">Telefono</label>
+                                <input type="text" class="form-control" id="telefono" name="telefono" required autocomplete="off">
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <label for="usuario">Nombre Usuario</label>
+                                <input type="text" class="form-control" id="usuario" name="usuario" required autocomplete="off">
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <label for="correo">Correo</label>
+                                <input type="email" class="form-control" id="correo" name="correo" required autocomplete="off">
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <label for="pass">Contraseña</label>
+                                <input type="password" class="form-control" id="pass" name="pass" required >
+                                <div class="progress progress-xxs mt-1">
+                                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" arial-valuenow="0" arial-valuemin="0" arial-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <label for="pass">Rol</label>
+                                <select name="rol" id="rol" class="form-control">
+                                    <option value="Registrador">Registrador</option>
+                                    <option value="Invitado">Invitado</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                      </div>
+                      <div class="card-body text-center ">
+                        <button type="submit" class="btn btn-info btn-block" >Agregar</button>
+                      </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
