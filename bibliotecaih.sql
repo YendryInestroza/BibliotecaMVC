@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-10-2020 a las 06:49:38
+-- Tiempo de generación: 11-12-2020 a las 00:40:05
 -- Versión del servidor: 5.7.14
 -- Versión de PHP: 7.0.10
 
@@ -19,6 +19,34 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bibliotecaih`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `areas`
+--
+
+CREATE TABLE `areas` (
+  `id_area` int(11) NOT NULL,
+  `area` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `descripcion_area` text COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `areas`
+--
+
+INSERT INTO `areas` (`id_area`, `area`, `descripcion_area`) VALUES
+(1, 'Ciencias Naturales', 'Naturaleza, áreas verdes, etc. '),
+(2, 'Estudios Sociales', 'Es un campo amplio y multidisciplinario que comprende las ciencias sociales y humanidades.'),
+(3, 'Matemáticas', 'Especialidad en números '),
+(4, 'Español', 'Muy importante la literatura'),
+(5, '', ''),
+(6, 'Física', 'Importante en la educacion '),
+(7, 'Biología', 'Desarrollo Humano'),
+(8, 'Informática', 'Conjunto de conocimientos técnicos que se ocupan del tratamiento automático de la información por medio de computadoras.'),
+(9, 'Física Deporte', 'Salud Mental'),
+(10, 'Programación', 'casgchgascgaskcgbkbx');
 
 -- --------------------------------------------------------
 
@@ -85,11 +113,18 @@ INSERT INTO `proveedores` (`p_id`, `nom_prov`, `dir_prov`, `tel_prov`, `rep_prov
 (13, 'Paper&amp;more', 'Choluteca ', '27256987', 'Sandra Betancourth'),
 (14, '1', '1', '1', '1'),
 (15, '2', '2', '2', '2'),
-(16, '3', '3', '3', '3');
+(16, '3', '3', '3', '3'),
+(18, 'CRS', 'Choluteca ', '27886596', 'Carla Ortez');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `areas`
+--
+ALTER TABLE `areas`
+  ADD PRIMARY KEY (`id_area`);
 
 --
 -- Indices de la tabla `libros`
@@ -108,6 +143,11 @@ ALTER TABLE `proveedores`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `areas`
+--
+ALTER TABLE `areas`
+  MODIFY `id_area` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
 -- AUTO_INCREMENT de la tabla `libros`
 --
 ALTER TABLE `libros`
@@ -116,7 +156,7 @@ ALTER TABLE `libros`
 -- AUTO_INCREMENT de la tabla `proveedores`
 --
 ALTER TABLE `proveedores`
-  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
